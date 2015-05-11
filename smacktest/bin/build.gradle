@@ -1,0 +1,7 @@
+description = """\
+JXMPP core components."""
+
+dependencies {
+	compile project(':jxmpp-util-cache')
+	testCompile 'junit:junit:4.11'
+}
