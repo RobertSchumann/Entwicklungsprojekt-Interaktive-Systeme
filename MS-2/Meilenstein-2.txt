@@ -125,19 +125,52 @@ was wiederum negative Auswirkungen hat.
 
 PoC
 
-Server aufsetzen
-Clients mit Server verbinden
-Mit ISBN-Suche verbinden
-Buch-Artikel finden und topic erstellen
-Bibliothek und Wunschliste erzeugen (topics)
-Benachrichtigung bei Übereinstimmung an Clients versenden
+-Server aufsetzen und Clients mit Server verbinden
+'Welches Risiko adressiert der PoC?' und 'Was ist das Ziel des PoC?'
+Wurden die richtigen Technologien ausgewählt? Kann mit Hilfe dieser Mittel das Projekt mit den gegebenen Ressourcen in der vorgegebenen Zeit realisiert werden?
+'Exit / Fail Kriterium'
+Es gelingt nicht das System in seinen Grundzügen aufzusetzen.
+'mögliche Alternativlösungen (Fallbacks) falls PoC nicht erfüllt werden kann'
+Verwerfen und Wahl anderen Technologien.
+'geplanter Termin und Status'
+08.05.2015. Verbindung steht.
+
+-Suchfunktion, Buch-Artikel finden (und topic erstellen)
+'Welches Risiko adressiert der PoC?' und 'Was ist das Ziel des PoC?'
+Sind die Funktionen realisierbar? Kann mit Hilfe der gewählten Mittel das Projekt mit den gegebenen Ressourcen in der vorgegebenen Zeit realisiert werden?
+'Exit / Fail Kriterium'
+Es gelingt nicht das System zu erweitern, da die Technologien nicht hinreichend verstanden werden bzw. umgesetzt werden können.
+'mögliche Alternativlösungen (Fallbacks) falls PoC nicht erfüllt werden kann'
+Verwerfen der Funktionen. Überdenken der Systemstruktur und Definieren neuer, umsetzbarer Funktionen. Eventuell nur lokale Testdaten verwenden und Problem hinten anstellen. 
+'geplanter Termin und Status'
+08.05.2015. Verbindung mit externem Service bisher nicht gelungen.
+
+-Bibliothek und Wunschliste erzeugen und ändern (topics)
+'Welches Risiko adressiert der PoC?' und 'Was ist das Ziel des PoC?'
+Sind die Funktionen realisierbar? Kann mit Hilfe der gewählten Mittel das Projekt mit den gegebenen Ressourcen in der vorgegebenen Zeit realisiert werden?
+'Exit / Fail Kriterium'
+Es gelingt nicht das System zu maniulieren, da die Technologien nicht hinreichend verstanden werden bzw. umgesetzt werden können.
+'mögliche Alternativlösungen (Fallbacks) falls PoC nicht erfüllt werden kann'
+Verwerfen und Überdenken. Wahl anderer Technologien.
+'geplanter Termin und Status'
+08.05.2015. Manipulation der Datenbank gelingt.
+
+-Benachrichtigung bei Übereinstimmung an Clients versenden
+'Welches Risiko adressiert der PoC?' und 'Was ist das Ziel des PoC?'
+Ist diese Funktion realisierbar? Kann mit Hilfe der gewählten Mittel das Projekt mit den gegebenen Ressourcen in der vorgegebenen Zeit realisiert werden?
+'Exit / Fail Kriterium'
+Es gelingt, da die Technologien nicht hinreichend verstanden werden bzw. umgesetzt werden können.
+'mögliche Alternativlösungen (Fallbacks) falls PoC nicht erfüllt werden kann'
+Verwerfen und Überdenken. Wahl anderer Technologien.
+'geplanter Termin und Status'
+08.05.2015. Anstoßen der Automatisierung bisher nicht gelungen.
 
 
 Architekturdiagramm
 
 siehe Architektur.png
 Die Anwendung soll mittels Java und node.js realisiert werden, da diese aus dem Studium bekannte Technologien sind. 
-Als Protokolle werden HTML und JSON (oder XML) verwendet. Die Anwendung soll auf Windows-Betriebssystemen laufen.
+Als Protokolle werden HTML und JSON verwendet. Die Anwendung soll auf Windows-Betriebssystemen laufen.
 
 
 Architekturbegründung
