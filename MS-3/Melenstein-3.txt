@@ -1,5 +1,13 @@
 Dokumentation der PoCs
 
+-Suchfunktion, Buch-Artikel finden (und topic erstellen)
+
+-Bibliothek und Wunschliste erzeugen und ändern (topics)
+
+
+
+-Benachrichtigung bei Übereinstimmung an Clients versenden
+
 
 
 Benutzermodelle (user models)
