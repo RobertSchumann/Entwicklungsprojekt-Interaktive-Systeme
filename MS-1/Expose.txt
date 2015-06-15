@@ -1,0 +1,38 @@
+Exposé Buchtausch
+
+Nutzungsproblem
+
+Es existieren einige Plattformen zum sogenannten Book Sharing, dem Büchertausch zwischen zwei Nutzern. 
+Doch bei allen diesen Lösungen kann man zwar nach einzelnen Werken oder auch den Werken eines Autoren suchen, 
+aber es fehlen Funktionen, die das Anlegen einer Liste der Bücher, die der Nutzer selbst zum Tausch anbietet 
+(hier im weiteren Verlauf Bibliothek genannt), sowie das Erstellen einer "Wunschliste" der gesuchten Bücher ermöglichen, 
+sie sind nicht betrugssicher, oder es fallen Gebühren pro Tausch an. Falls ein anderer Nutzer nun ein Buch anbietet, 
+das auf der eigenen Wunschliste steht und ein Buch aus der eigenen Bibliothek sucht, werden beide automatisiert 
+(per E-Mail oder SMS) benachrichtigt. So muss man nicht umständlich nach angebotenen Büchern suchen, 
+sondern wird bei einer solchen Übereinstimmung automatisch benachrichtigt. Außerdem soll der Nutzer in der Lage sein, 
+sich die Bibliotheken der Nutzer anzusehen, die Bücher in ihrer Wunschliste haben, die er selbst zum Tausch anbietet.
+
+
+Zielsetzung
+
+Die Anwendung muss den Nutzern ermöglichen ihr Profil zu verwalten, Wunschlisten und Bibliotheken zu erstellen, 
+Bücher per Autoren-, Titel- und ISBN-Suche zu finden, ihnen ermöglichen Bücher auch zu verschenken, 
+oder eben nur zum Tauschen anzubieten und die Abwicklung des Tausches über ein Kontaktformular bereitstellen. 
+Die Anwendung soll ermöglichen Bücher zu verfolgen, um dem Nutzer zu zeigen, 
+welchen Weg ein Buch schon "zurückgelegt" hat und Bewertungen von Nutzern über andere Nutzer, 
+sowie Bücher zu verfassen. Die Anwendung kann zusätzlich Angebote von kommerziellen Buchhändlern anzeigen und 
+einen Treuhandservice anbieten.
+
+
+Verteilte Anwendungslogik
+
+Durch den automatisierten Abgleich zwischen Bibliotheken und Wunschlisten der Nutzer und der bei Übereinstimmung 
+automatischen E-Mail- oder SMS-Benachrichtigung ist die Verteiltheit gewährleistet.
+Wirtschaftliche und gesellschaftliche Relevanz
+
+Alle oder die meisten Bücher existieren häufiger, als sie von Personen aktuell benötigt werden, 
+um ihren Wissens- oder Unterhaltungsbedarf zu decken. Vielen ist das "ein Dorn im Auge", 
+da ja für die Herstellung von Büchern wertvolle Ressourcen benötigt werden. Außerdem ist auch eine schöne Idee, 
+ein Buch, das man gerne gelesen hat an jemand anderen weiterzugeben, anstatt es nur in seinem Regal 
+verstauben zu lassen, oder gar wegzuschmeißen. Wirtschaftlich kann sich die Anwendung lohnen, 
+indem man sie über ein Abonement, Gebühren für kommerzielle Nutzung oder Nutzerspenden finanziert.
