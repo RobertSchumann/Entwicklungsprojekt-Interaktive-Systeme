@@ -2,12 +2,42 @@ Dokumentation der PoCs
 
 -Suchfunktion, Buch-Artikel finden (und topic erstellen)
 
-
+TODO
 
 
 -Bibliothek und Wunschliste erzeugen und ändern (topics)
 
 Functions:
+// Fill table with data
+function populateWishTable() {
+
+    // Empty content string
+    var tableContent = '';
+
+    // jQuery AJAX call for JSON
+    $.getJSON( '/users/user1wish', function( data ) {
+
+        // For each item in our JSON, add a table row and cells to the content string
+        $.each(data, function(){
+            tableContent += '<tr>';
+            tableContent += '<td>' + this.author + '</td>';
+            tableContent += '<td>' + this.titel + '</td>';
+            tableContent += '<td>' + this.edition + '</td>';
+            tableContent += '<td>' + this.publisher + '</td>';
+            tableContent += '<td>' + this.printrun + '</td>';
+            tableContent += '<td>' + this.isbn10 + '</td>';
+            tableContent += '<td>' + this.isbn13 + '</td>';
+            tableContent += '<td>' + this.status + '</td>';
+            tableContent += '<td><a href="#" class="linkdeletefromuser1wish" rel="' + this._id + '">delete</a></td>';
+//            tableContent += '<td><a href="#" class="linkchangestatususer1wish" rel="' + this._id + '">change status</a></td>';
+            tableContent += '</tr>';
+        });
+
+        // Inject the whole content string into our existing HTML table
+        $('#user1WishList table tbody').html(tableContent);
+    });
+};
+
 // Add to User1Lib
 function addToUser1Lib(event) {
     event.preventDefault();
@@ -270,9 +300,11 @@ router.delete('/deletefromuser1wish/:id', function(req, res) {
 
 -Benachrichtigung bei Übereinstimmung an Clients versenden
 
+TODO
 
 
 Benutzermodelle (user models)
+
 
 
 
@@ -280,7 +312,9 @@ Benutzungsmodelle (task models)
 
 
 
+
 Anforderungen
+
 
 
 
