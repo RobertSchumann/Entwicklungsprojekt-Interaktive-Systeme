@@ -1,20 +1,25 @@
+
 Zielhierarchie
 
 •Strategische Ziele (langfristig)
+
 Als strategisches Ziel muss die Bereitstellung der im Exposé genannten, gewünschten Funktionalitäten 
 in ihrem vollen Umfang festgelegt werden. Weiterhin sollen im Verlauf des Projektes entwickelte Ideen 
 zur Verbesserung der Nutzungserfahrung umgesetzt werden.
 
 •Taktische Ziele (mittelfristig)
+
 Taktisches Ziel muss die Lauffähigkeit der Anwendung in einer Testumgebung sein. 
 Es sollen alle gewünschten Funktionen in diesem Rahmen ausführbar sein.
 
 •Operative Ziele (kurzfristig)
+
 Als operatives Ziel muss die Kommunikation zwischen den Nutzern und dem Anwendungs-Server, 
 dem E-Mail-Server, sowie die Kommunikation der Nutzer untereinander funktionieren. 
 Es soll die Automatisierung des Abgleichs der "Bibliotheken" und "Wunschlisten" der Nutzer 
 und die darauf folgende Generierung der Benachrichtigung realisiert werden. Es kann die Nutzerverwaltung, 
 das Bewertungssystem und die Verfolgungsoption umgesetzt werden.
+
 
 
 related-works (Marktrecherche)
@@ -57,6 +62,7 @@ die fiktive Währung von hitflip.de verkauft werden. Es fallen pro Kauf zusätzl
 Flips werden vom Anbieter auch zum Kauf angeboten. Vorteile genauso wie bei tauschticket.de.
 
 
+
 Alleinstellungsmerkmale
 
 Die "Stöbern-Funktion", die es ermöglicht die Angebote der Nutzer zu sehen, die Bücher auf ihrer Wunschliste haben, 
@@ -64,6 +70,7 @@ welche man selbst in der Bibliothek hat ist in neu. Dann kann der Nutzer einfach
 hinzufügen und schon gibt es eine Übereinstimmung. So ist es für alle Nutzer attraktiv beliebte Bücher einzustellen. 
 Wirklich direkten Büchertausch gibt es nicht, die recherchierten Seiten arbeiten alle mit einer fiktiven Währung, 
 um die Notwendigkeit einer Übereinstimmung zu umgehen.
+
 
 
 Methodischer Rahmen
@@ -94,6 +101,7 @@ Eine Kombination aus diesen beiden letzten Methoden ("usage centered design" und
 die Entwicklung der Anwendung und wird gewählt.
 
 
+
 Kommunikationsmodell
 
 Siehe Kommunikationsmodell.png, Buch suchen.png und Stöbern.png
@@ -106,6 +114,7 @@ Nehmen beide Nutzer das Angebot an wird das topic aktualisiert und beide Nutzer 
 des jeweils anderen Clients. [asynchron]
 Stöbert der Nutzer nach Büchern bekommt er alle Nutzer angezeigt, die nach Büchern suchen, die er selbst anbietet. 
 Hier kann nach verschiedenen Kriterien sortiert werden, zum Beispiel Menge der angebotenen Bücher.
+
 
 
 Risiken
@@ -123,47 +132,53 @@ Das gefährdet das gesammte Projekt in Hinsicht auf gewünschten Umfang und wirk
 was wiederum negative Auswirkungen hat.
 
 
+
 PoC
 
--Server aufsetzen und Clients mit Server verbinden
-'Welches Risiko adressiert der PoC?' und 'Was ist das Ziel des PoC?'
-Wurden die richtigen Technologien ausgewählt? Kann mit Hilfe dieser Mittel das Projekt mit den gegebenen Ressourcen in der vorgegebenen Zeit realisiert werden?
-'Exit / Fail Kriterium'
-Es gelingt nicht das System in seinen Grundzügen aufzusetzen.
-'mögliche Alternativlösungen (Fallbacks) falls PoC nicht erfüllt werden kann'
-Verwerfen und Wahl anderen Technologien.
-'geplanter Termin und Status'
-08.05.2015. Verbindung steht.
-
 -Suchfunktion, Buch-Artikel finden (und topic erstellen)
+
 'Welches Risiko adressiert der PoC?' und 'Was ist das Ziel des PoC?'
 Sind die Funktionen realisierbar? Kann mit Hilfe der gewählten Mittel das Projekt mit den gegebenen Ressourcen in der vorgegebenen Zeit realisiert werden?
+
 'Exit / Fail Kriterium'
 Es gelingt nicht das System zu erweitern, da die Technologien nicht hinreichend verstanden werden bzw. umgesetzt werden können.
+
 'mögliche Alternativlösungen (Fallbacks) falls PoC nicht erfüllt werden kann'
 Verwerfen der Funktionen. Überdenken der Systemstruktur und Definieren neuer, umsetzbarer Funktionen. Eventuell nur lokale Testdaten verwenden und Problem hinten anstellen. 
+
 'geplanter Termin und Status'
 08.05.2015. Verbindung mit externem Service bisher nicht gelungen.
 
+
 -Bibliothek und Wunschliste erzeugen und ändern (topics)
+
 'Welches Risiko adressiert der PoC?' und 'Was ist das Ziel des PoC?'
 Sind die Funktionen realisierbar? Kann mit Hilfe der gewählten Mittel das Projekt mit den gegebenen Ressourcen in der vorgegebenen Zeit realisiert werden?
+
 'Exit / Fail Kriterium'
 Es gelingt nicht das System zu maniulieren, da die Technologien nicht hinreichend verstanden werden bzw. umgesetzt werden können.
+
 'mögliche Alternativlösungen (Fallbacks) falls PoC nicht erfüllt werden kann'
 Verwerfen und Überdenken. Wahl anderer Technologien.
+
 'geplanter Termin und Status'
 08.05.2015. Manipulation der Datenbank gelingt.
 
+
 -Benachrichtigung bei Übereinstimmung an Clients versenden
+
 'Welches Risiko adressiert der PoC?' und 'Was ist das Ziel des PoC?'
 Ist diese Funktion realisierbar? Kann mit Hilfe der gewählten Mittel das Projekt mit den gegebenen Ressourcen in der vorgegebenen Zeit realisiert werden?
+
 'Exit / Fail Kriterium'
 Es gelingt, da die Technologien nicht hinreichend verstanden werden bzw. umgesetzt werden können.
+
 'mögliche Alternativlösungen (Fallbacks) falls PoC nicht erfüllt werden kann'
 Verwerfen und Überdenken. Wahl anderer Technologien.
+
 'geplanter Termin und Status'
 08.05.2015. Anstoßen der Automatisierung bisher nicht gelungen.
+
 
 
 Architekturdiagramm
@@ -173,11 +188,13 @@ Die Anwendung soll mittels Java und node.js realisiert werden, da diese aus dem 
 Als Protokolle werden HTML und JSON verwendet. Die Anwendung soll auf Windows-Betriebssystemen laufen.
 
 
+
 Architekturbegründung
 
 Es wird eine Desktop-Anwendung umgesetzt. Eine reine Umsetzung für mobile Endgeräte scheint hier nicht sinnvoll, 
 da niemand alle seine Bücher mit sich herumträgt. Trotzdem kann die Anwendung noch für mobile Endgeräten optimiert 
 werden. Da Android auf Java basiert, bzw. Java unterstützt wird stellt dies kein Problem dar.
+
 
 
 Projektplan
