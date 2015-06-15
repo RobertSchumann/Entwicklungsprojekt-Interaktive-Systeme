@@ -2,7 +2,269 @@ Dokumentation der PoCs
 
 -Suchfunktion, Buch-Artikel finden (und topic erstellen)
 
+
+
+
 -Bibliothek und Wunschliste erzeugen und ändern (topics)
+
+Functions:
+// Add to User1Lib
+function addToUser1Lib(event) {
+    event.preventDefault();
+
+    // Super basic validation - increase errorCount variable if any fields are blank
+    var errorCount = 0;
+    $('#addToUser1Lib input').each(function(index, val) {
+        if($(this).val() === '') { errorCount++; }
+    });
+
+    // Check and make sure errorCount's still at zero
+    if(errorCount === 0) {
+
+        // If it is, compile all user info into one object
+        var newEntry = {
+            'author': $('#addToUser1Lib fieldset input#inputAuthor').val(),
+            'titel': $('#addToUser1Lib fieldset input#inputTitel').val(),
+            'edition': $('#addToUser1Lib fieldset input#inputEdition').val(),
+            'publisher': $('#addToUser1Lib fieldset input#inputPublisher').val(),
+            'printrun': $('#addToUser1Lib fieldset input#inputPrintRun').val(),
+            'isbn10': $('#addToUser1Lib fieldset input#inputISBN10').val(),
+            'isbn13': $('#addToUser1Lib fieldset input#inputISBN13').val(),
+            'status': $('#addToUser1Lib fieldset input#inputStatus').val()
+        }
+
+        // Use AJAX to post the object to our adduser service
+        $.ajax({
+            type: 'POST',
+            data: newEntry,
+            url: '/users/addtouser1lib',
+            dataType: 'JSON'
+        }).done(function( response ) {
+
+            // Check for successful (blank) response
+            if (response.msg === '') {
+
+                // Clear the form inputs
+                $('#addToUser1Lib fieldset input').val('');
+
+                // Update the table
+                populateLibTable();
+
+            }
+            else {
+
+                // If something goes wrong, alert the error message that our service returned
+                alert('Error: ' + response.msg);
+
+            }
+        });
+    }
+    else {
+        // If errorCount is more than 0, error out
+        alert('Please fill in all fields');
+        return false;
+    }
+}
+
+// Add to User1Wish
+function addToUser1Wish(event) {
+    event.preventDefault();
+
+    // Super basic validation - increase errorCount variable if any fields are blank
+    var errorCount = 0;
+    $('#addToUser1Wish input').each(function(index, val) {
+        if($(this).val() === '') { errorCount++; }
+    });
+
+    // Check and make sure errorCount's still at zero
+    if(errorCount === 0) {
+
+        // If it is, compile all user info into one object
+        var newEntry = {
+            'author': $('#addToUser1Wish fieldset input#inputAuthor').val(),
+            'titel': $('#addToUser1Wish fieldset input#inputTitel').val(),
+            'edition': $('#addToUser1Wish fieldset input#inputEdition').val(),
+            'publisher': $('#addToUser1Wish fieldset input#inputPublisher').val(),
+            'printrun': $('#addToUser1Wish fieldset input#inputPrintRun').val(),
+            'isbn10': $('#addToUser1Wish fieldset input#inputISBN10').val(),
+            'isbn13': $('#addToUser1Wish fieldset input#inputISBN13').val(),
+            'status': $('#addToUser1Wish fieldset input#inputStatus').val()
+        }
+
+        // Use AJAX to post the object to our adduser service
+        $.ajax({
+            type: 'POST',
+            data: newEntry,
+            url: '/users/addtouser1wish',
+            dataType: 'JSON'
+        }).done(function( response ) {
+
+            // Check for successful (blank) response
+            if (response.msg === '') {
+
+                // Clear the form inputs
+                $('#addToUser1Wish fieldset input').val('');
+
+                // Update the table
+                populateWishTable();
+
+            }
+            else {
+
+                // If something goes wrong, alert the error message that our service returned
+                alert('Error: ' + response.msg);
+
+            }
+        });
+    }
+    else {
+        // If errorCount is more than 0, error out
+        alert('Please fill in all fields');
+        return false;
+    }
+}
+
+// Delete From User1lib
+function deleteFromUser1Lib(event) {
+
+    event.preventDefault();
+
+    // Pop up a confirmation dialog
+    var confirmation = confirm('Are you sure you want to delete this entry?');
+
+    // Check and make sure the user confirmed
+    if (confirmation === true) {
+
+        // If they did, do our delete
+        $.ajax({
+            type: 'DELETE',
+            url: '/users/deletefromuser1lib/' + $(this).attr('rel')
+        }).done(function( response ) {
+
+            // Check for a successful (blank) response
+            if (response.msg === '') {
+            }
+            else {
+                alert('Error: ' + response.msg);
+            }
+
+            // Update the table
+            populateLibTable();
+
+        });
+
+    }
+    else {
+
+        // If they said no to the confirm, do nothing
+        return false;
+
+    }
+
+};
+
+// Delete User From User1wish
+function deleteFromUser1Wish(event) {
+
+    event.preventDefault();
+
+    // Pop up a confirmation dialog
+    var confirmation = confirm('Are you sure you want to delete this entry?');
+
+    // Check and make sure the user confirmed
+    if (confirmation === true) {
+
+        // If they did, do our delete
+        $.ajax({
+            type: 'DELETE',
+            url: '/users/deletefromuser1wish/' + $(this).attr('rel')
+        }).done(function( response ) {
+
+            // Check for a successful (blank) response
+            if (response.msg === '') {
+            }
+            else {
+                alert('Error: ' + response.msg);
+            }
+
+            // Update the table
+            populateWishTable();
+
+        });
+
+    }
+    else {
+
+        // If they said no to the confirm, do nothing
+        return false;
+
+    }
+
+};
+
+Clicks:
+    // Add Entry to user1Library button click
+    $('#btnAddToUser1Lib').on('click', addToUser1Lib);
+    
+    // Add Entry to user1WishList button click
+    $('#btnAddToUser1Wish').on('click', addToUser1Wish);
+    
+    // Delete from User1library click
+    $('#user1Library table tbody').on('click', 'td a.linkdeletefromuser1lib', deleteFromUser1Lib);
+    
+    // Delete from User1wishlist click
+    $('#user1WishList table tbody').on('click', 'td a.linkdeletefromuser1wish', deleteFromUser1Wish);
+
+Routes:
+/*
+ * POST to add to user1lib
+ */
+router.post('/addtouser1lib', function(req, res) {
+    var db = req.db;
+    var collection = db.get('user1lib');
+    collection.insert(req.body, function(err, result){
+        res.send(
+            (err === null) ? { msg: '' } : { msg: err }
+        );
+    });
+});
+
+/*
+ * POST to add to user1wish
+ */
+router.post('/addtouser1wish', function(req, res) {
+    var db = req.db;
+    var collection = db.get('user1wish');
+    collection.insert(req.body, function(err, result){
+        res.send(
+            (err === null) ? { msg: '' } : { msg: err }
+        );
+    });
+});
+
+/*
+ * DELETE to delete entry user1lib
+ */
+router.delete('/deletefromuser1lib/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('user1lib');
+    var entryToDelete = req.params.id;
+    collection.remove({ '_id' : entryToDelete }, function(err) {
+        res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
+    });
+});
+
+/*
+ * DELETE to delete entry user1wish
+ */
+router.delete('/deletefromuser1wish/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('user1wish');
+    var entryToDelete = req.params.id;
+    collection.remove({ '_id' : entryToDelete }, function(err) {
+        res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
+    });
+});
 
 
 
