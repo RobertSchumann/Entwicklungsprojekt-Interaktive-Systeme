@@ -182,4 +182,4 @@ werden. Da Android auf Java basiert, bzw. Java unterstützt wird stellt dies kei
 
 Projektplan
 
-siehe Projektplan1.pdf
+siehe Projektplan2.pdf
