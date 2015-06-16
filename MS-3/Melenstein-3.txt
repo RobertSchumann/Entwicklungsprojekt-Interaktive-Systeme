@@ -305,17 +305,50 @@ TODO
 
 Benutzermodelle (user models)
 
+Identifizierung der primären, sekundären und tertiären Benutzer:
 
+-Primäre Benutzer
+Personen, die gerne und viel lesen und ihre Bücher gerne weitergeben.
+Personen, die ihre Bücher gerne gebraucht erwerben zum Beispiel auf Flohmärkten.
+Personen, die ihre Bücher ungerne an Organisationen verkaufen möchten, die diese weiterverkaufen.
+Personen, die ihre Bibliothek online verwalten wollen.
+Personen, die sich für die Werke bestimmter Autoren interessieren.
+Personen, die Kontakt zu anderen Lesern suchen.
+Personen, die sich für das Experiment "Weg des Buches" interessieren, wie bei der Booksharing-Bewegung.
+Personen, die beim Erwerb eines Buches Geld sparen wollen.
+Personen, die aus ökologischen Gründen keine Neuware kaufen wollen.
+
+-Sekundäre Benutzer
+Personen, die Bücher, die sie selbst nicht lesen wollen (z.B. Geschenk) gerne tauschen möchten.
+Personen, die ein bestimmtes Buch gerne weitergeben möchten.
+
+-Tertiäre Benutzer
+Kommerzielle Anbieter, deren Angebote angezeigt werden. 
+ 
+Charakterisierung der Benutzer:
+Zuordnung relevanter Merkmale zu den Benutzern siehe Charakterisierung.pdf.
+
+
+Anforderungen (user needs)
+
+Zusammenfassung und Priorisierung der Benutzer und was das System ihnen bieten muss:
+
+1  Benutzerwunsch: Bibliotheksverwaltung nutzen (abhängig von Suche). 
+System -> Bibliothek (anzeigen, löschen, hinzufügen (Suche (Autor, Titel, ISBN))
+
+2  Benutzerwunsch: "Tausch"-Funktion nutzen (abhängig von der Bibliotheks- und Wunschlistenverwaltung). 
+System -> Bibliothek und Wunschliste (anzeigen, löschen, hinzufügen), Benachrichtigung bei Übereinstimmung (Tausch anbieten) 
+
+3  Benutzerwunsch: "Stöbern"-Funktion nutzen (abhängig von der Bibliotheks- und Wunschlistenverwaltung). 
+System -> Bibliothek (anzeigen, löschen, hinzufügen), Stöbern (anzeigen der Übereinstimmungen, zur Wunschliste hinzufügen anbieten, Wunschliste (hinzufügen), Benachrichtigung bei Übereinstimmung (Tausch anbieten))
 
 
 Benutzungsmodelle (task models)
 
-
-
-
-Anforderungen
-
-
+siehe Task-models.pdf
 
 
 Projektplan
+
+siehe Projektplan3.pdf
+
