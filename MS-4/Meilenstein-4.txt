@@ -46,8 +46,13 @@ Hält Daten über Tauschangebote. Der Status gibt an, ob ein Angebot angenommen 
 
 
 
-
 WBA-Modellierungen
+
+
+Anwendungslogik der Komponenten
+
+Topics
+
 
 
 Prototypen UI
