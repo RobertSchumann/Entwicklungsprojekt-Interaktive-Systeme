@@ -345,7 +345,7 @@ System -> Bibliothek (anzeigen, löschen, hinzufügen), Stöbern (anzeigen der �
 
 Benutzungsmodelle (task models)
 
-siehe Task-models.pdf
+siehe Use cases.odt
 
 
 Projektplan
