@@ -1,0 +1,185 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to buchtausch
+
+    // Wrapper
+    #wrapper
+
+        //MENUE
+        button#btnHome Home
+        button#btnSearch Search book
+        button#btnBrowse Browse
+        button#btnTradeOffers Trade Offers
+        button#btnTradeHistory Trade History
+        button#btnMyAccount My Account
+        // /MENUE
+
+        // LIBRARY
+        h2 Library
+        #library
+            table
+                thead
+                    th BookID
+                    th Author
+                    th Titel
+                    th Edition
+                    th Publisher
+                    th Print run
+                    th ISBN-10
+                    th ISBN-13
+                    th Status
+                    th Delete?
+                tbody
+        button#btnAddToLibraryVisibiity Add book to Library
+        // /LIBRARY
+
+        // ADD TO LIBRARY
+        h2 Add to Library
+        #addToLibrary
+            fieldset
+                input#inputBookID(type='text', placeholder='BookID')
+                input#inputAuthor(type='text', placeholder='Author')
+                br
+                input#inputTitel(type='text', placeholder='Titel')
+                input#inputEdition(type='text', placeholder='Edition')
+                br
+                input#inputPublisher(type='text', placeholder='Publisher')
+                input#inputPrintRun(type='text', placeholder='Print run')
+                br
+                input#inputISBN10(type='text', placeholder='ISBN-10')
+                input#inputISBN13(type='text', placeholder='ISBN-13')
+                br
+                button#btnAddToLibrary Add to Library
+        // /ADD TO LIBRARY
+
+        // WISH LIST
+        h2 Wish List
+        #wishList
+            table
+                thead
+                    th BookID
+                    th Author
+                    th Titel
+                    th Edition
+                    th Publisher
+                    th Print run
+                    th ISBN-10
+                    th ISBN-13
+                    th Status
+                    th Delete?
+                tbody
+        button#btnAddToWishListVisibility Add book to Wish List
+        // /WISH LIST
+
+        // ADD TO WISH LIST
+        h2 Add to Wish List
+        #addToWishList
+            fieldset
+                input#inputBookID(type='text', placeholder='BookID')
+                input#inputAuthor(type='text', placeholder='Author')
+                br
+                input#inputTitel(type='text', placeholder='Titel')
+                input#inputEdition(type='text', placeholder='Edition')
+                br
+                input#inputPublisher(type='text', placeholder='Publisher')
+                input#inputPrintRun(type='text', placeholder='Print run')
+                br
+                input#inputISBN10(type='text', placeholder='ISBN-10')
+                input#inputISBN13(type='text', placeholder='ISBN-13')
+                br
+                button#btnAddToWishList Add to Wish List
+        // /ADD TO WISH LIST
+
+        // BROWSE
+        h2 Browse
+        #browse
+            table
+                thead
+                    th BookID
+                    th Author
+                    th Titel
+                    th Edition
+                    th Publisher
+                    th Print run
+                    th ISBN-10
+                    th ISBN-13
+                    th Add to Wish List?
+                tbody
+        // /BROWSE
+
+        // TRADE OFFERS
+        h2 Trade Offers (My books <--> Trade Partners books)
+        #tradeOffers
+            table
+                thead
+                    th Status
+                    th BookID
+                    th Author
+                    th Titel
+                    th Edition
+                    th Publisher
+                    th Print run
+                    th ISBN-10
+                    th ISBN-13
+                    th <-->
+                    th Trader
+                    th BookID
+                    th Author
+                    th Titel
+                    th Edition
+                    th Publisher
+                    th Print run
+                    th ISBN-10
+                    th ISBN-13
+                    th Offer Trade?
+                    th Accept Trade?
+                tbody
+        // /TRADE OFFERS
+
+        // TRADE HISTORY
+        h2 Trade History (My given away books <--> My traded books)
+        #tradeHistory
+            table
+                thead
+                    th Status
+                    th BookID
+                    th Author
+                    th Titel
+                    th Edition
+                    th Publisher
+                    th Print run
+                    th ISBN-10
+                    th ISBN-13
+                    th <-->
+                    th Trader
+                    th BookID
+                    th Author
+                    th Titel
+                    th Edition
+                    th Publisher
+                    th Print run
+                    th ISBN-10
+                    th ISBN-13
+                    th Rate Trade?
+                tbody
+        // /TRADE HISTORY
+
+        // MY ACCOUNT
+        h2 My Account
+        #myAccount
+            fieldset
+                input#inputUserName(type='text', placeholder='Username')
+                input#inputRealName(type='text', placeholder='First Name Last Name')
+                input#inputStreetAdress(type='text', placeholder='Street Adress and Number')
+                br
+                input#inputCity(type='text', placeholder='Residence')
+                input#inputPostalCode(type='text', placeholder='Postal Code')
+                input#inputCountry(type='text', placeholder='Country')
+                br
+                button#btnChangeAccount Change Account Data
+        // /MY ACCOUNT
+
+    // /WRAPPER
+

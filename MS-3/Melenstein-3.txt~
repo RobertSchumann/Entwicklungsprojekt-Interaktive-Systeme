@@ -1,0 +1,354 @@
+Dokumentation der PoCs
+
+-Suchfunktion, Buch-Artikel finden (und topic erstellen)
+
+TODO
+
+
+-Bibliothek und Wunschliste erzeugen und ändern (topics)
+
+Functions:
+// Fill table with data
+function populateWishTable() {
+
+    // Empty content string
+    var tableContent = '';
+
+    // jQuery AJAX call for JSON
+    $.getJSON( '/users/user1wish', function( data ) {
+
+        // For each item in our JSON, add a table row and cells to the content string
+        $.each(data, function(){
+            tableContent += '<tr>';
+            tableContent += '<td>' + this.author + '</td>';
+            tableContent += '<td>' + this.titel + '</td>';
+            tableContent += '<td>' + this.edition + '</td>';
+            tableContent += '<td>' + this.publisher + '</td>';
+            tableContent += '<td>' + this.printrun + '</td>';
+            tableContent += '<td>' + this.isbn10 + '</td>';
+            tableContent += '<td>' + this.isbn13 + '</td>';
+            tableContent += '<td>' + this.status + '</td>';
+            tableContent += '<td><a href="#" class="linkdeletefromuser1wish" rel="' + this._id + '">delete</a></td>';
+//            tableContent += '<td><a href="#" class="linkchangestatususer1wish" rel="' + this._id + '">change status</a></td>';
+            tableContent += '</tr>';
+        });
+
+        // Inject the whole content string into our existing HTML table
+        $('#user1WishList table tbody').html(tableContent);
+    });
+};
+
+// Add to User1Lib
+function addToUser1Lib(event) {
+    event.preventDefault();
+
+    // Super basic validation - increase errorCount variable if any fields are blank
+    var errorCount = 0;
+    $('#addToUser1Lib input').each(function(index, val) {
+        if($(this).val() === '') { errorCount++; }
+    });
+
+    // Check and make sure errorCount's still at zero
+    if(errorCount === 0) {
+
+        // If it is, compile all user info into one object
+        var newEntry = {
+            'author': $('#addToUser1Lib fieldset input#inputAuthor').val(),
+            'titel': $('#addToUser1Lib fieldset input#inputTitel').val(),
+            'edition': $('#addToUser1Lib fieldset input#inputEdition').val(),
+            'publisher': $('#addToUser1Lib fieldset input#inputPublisher').val(),
+            'printrun': $('#addToUser1Lib fieldset input#inputPrintRun').val(),
+            'isbn10': $('#addToUser1Lib fieldset input#inputISBN10').val(),
+            'isbn13': $('#addToUser1Lib fieldset input#inputISBN13').val(),
+            'status': $('#addToUser1Lib fieldset input#inputStatus').val()
+        }
+
+        // Use AJAX to post the object to our adduser service
+        $.ajax({
+            type: 'POST',
+            data: newEntry,
+            url: '/users/addtouser1lib',
+            dataType: 'JSON'
+        }).done(function( response ) {
+
+            // Check for successful (blank) response
+            if (response.msg === '') {
+
+                // Clear the form inputs
+                $('#addToUser1Lib fieldset input').val('');
+
+                // Update the table
+                populateLibTable();
+
+            }
+            else {
+
+                // If something goes wrong, alert the error message that our service returned
+                alert('Error: ' + response.msg);
+
+            }
+        });
+    }
+    else {
+        // If errorCount is more than 0, error out
+        alert('Please fill in all fields');
+        return false;
+    }
+}
+
+// Add to User1Wish
+function addToUser1Wish(event) {
+    event.preventDefault();
+
+    // Super basic validation - increase errorCount variable if any fields are blank
+    var errorCount = 0;
+    $('#addToUser1Wish input').each(function(index, val) {
+        if($(this).val() === '') { errorCount++; }
+    });
+
+    // Check and make sure errorCount's still at zero
+    if(errorCount === 0) {
+
+        // If it is, compile all user info into one object
+        var newEntry = {
+            'author': $('#addToUser1Wish fieldset input#inputAuthor').val(),
+            'titel': $('#addToUser1Wish fieldset input#inputTitel').val(),
+            'edition': $('#addToUser1Wish fieldset input#inputEdition').val(),
+            'publisher': $('#addToUser1Wish fieldset input#inputPublisher').val(),
+            'printrun': $('#addToUser1Wish fieldset input#inputPrintRun').val(),
+            'isbn10': $('#addToUser1Wish fieldset input#inputISBN10').val(),
+            'isbn13': $('#addToUser1Wish fieldset input#inputISBN13').val(),
+            'status': $('#addToUser1Wish fieldset input#inputStatus').val()
+        }
+
+        // Use AJAX to post the object to our adduser service
+        $.ajax({
+            type: 'POST',
+            data: newEntry,
+            url: '/users/addtouser1wish',
+            dataType: 'JSON'
+        }).done(function( response ) {
+
+            // Check for successful (blank) response
+            if (response.msg === '') {
+
+                // Clear the form inputs
+                $('#addToUser1Wish fieldset input').val('');
+
+                // Update the table
+                populateWishTable();
+
+            }
+            else {
+
+                // If something goes wrong, alert the error message that our service returned
+                alert('Error: ' + response.msg);
+
+            }
+        });
+    }
+    else {
+        // If errorCount is more than 0, error out
+        alert('Please fill in all fields');
+        return false;
+    }
+}
+
+// Delete From User1lib
+function deleteFromUser1Lib(event) {
+
+    event.preventDefault();
+
+    // Pop up a confirmation dialog
+    var confirmation = confirm('Are you sure you want to delete this entry?');
+
+    // Check and make sure the user confirmed
+    if (confirmation === true) {
+
+        // If they did, do our delete
+        $.ajax({
+            type: 'DELETE',
+            url: '/users/deletefromuser1lib/' + $(this).attr('rel')
+        }).done(function( response ) {
+
+            // Check for a successful (blank) response
+            if (response.msg === '') {
+            }
+            else {
+                alert('Error: ' + response.msg);
+            }
+
+            // Update the table
+            populateLibTable();
+
+        });
+
+    }
+    else {
+
+        // If they said no to the confirm, do nothing
+        return false;
+
+    }
+
+};
+
+// Delete User From User1wish
+function deleteFromUser1Wish(event) {
+
+    event.preventDefault();
+
+    // Pop up a confirmation dialog
+    var confirmation = confirm('Are you sure you want to delete this entry?');
+
+    // Check and make sure the user confirmed
+    if (confirmation === true) {
+
+        // If they did, do our delete
+        $.ajax({
+            type: 'DELETE',
+            url: '/users/deletefromuser1wish/' + $(this).attr('rel')
+        }).done(function( response ) {
+
+            // Check for a successful (blank) response
+            if (response.msg === '') {
+            }
+            else {
+                alert('Error: ' + response.msg);
+            }
+
+            // Update the table
+            populateWishTable();
+
+        });
+
+    }
+    else {
+
+        // If they said no to the confirm, do nothing
+        return false;
+
+    }
+
+};
+
+Clicks:
+    // Add Entry to user1Library button click
+    $('#btnAddToUser1Lib').on('click', addToUser1Lib);
+    
+    // Add Entry to user1WishList button click
+    $('#btnAddToUser1Wish').on('click', addToUser1Wish);
+    
+    // Delete from User1library click
+    $('#user1Library table tbody').on('click', 'td a.linkdeletefromuser1lib', deleteFromUser1Lib);
+    
+    // Delete from User1wishlist click
+    $('#user1WishList table tbody').on('click', 'td a.linkdeletefromuser1wish', deleteFromUser1Wish);
+
+Routes:
+/*
+ * POST to add to user1lib
+ */
+router.post('/addtouser1lib', function(req, res) {
+    var db = req.db;
+    var collection = db.get('user1lib');
+    collection.insert(req.body, function(err, result){
+        res.send(
+            (err === null) ? { msg: '' } : { msg: err }
+        );
+    });
+});
+
+/*
+ * POST to add to user1wish
+ */
+router.post('/addtouser1wish', function(req, res) {
+    var db = req.db;
+    var collection = db.get('user1wish');
+    collection.insert(req.body, function(err, result){
+        res.send(
+            (err === null) ? { msg: '' } : { msg: err }
+        );
+    });
+});
+
+/*
+ * DELETE to delete entry user1lib
+ */
+router.delete('/deletefromuser1lib/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('user1lib');
+    var entryToDelete = req.params.id;
+    collection.remove({ '_id' : entryToDelete }, function(err) {
+        res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
+    });
+});
+
+/*
+ * DELETE to delete entry user1wish
+ */
+router.delete('/deletefromuser1wish/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('user1wish');
+    var entryToDelete = req.params.id;
+    collection.remove({ '_id' : entryToDelete }, function(err) {
+        res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
+    });
+});
+
+
+
+-Benachrichtigung bei Übereinstimmung an Clients versenden
+
+TODO
+
+
+Benutzermodelle (user models)
+
+Identifizierung der primären, sekundären und tertiären Benutzer:
+
+-Primäre Benutzer
+Personen, die gerne und viel lesen und ihre Bücher gerne weitergeben.
+Personen, die ihre Bücher gerne gebraucht erwerben zum Beispiel auf Flohmärkten.
+Personen, die ihre Bücher ungerne an Organisationen verkaufen möchten, die diese weiterverkaufen.
+Personen, die ihre Bibliothek online verwalten wollen.
+Personen, die sich für die Werke bestimmter Autoren interessieren.
+Personen, die Kontakt zu anderen Lesern suchen.
+Personen, die sich für das Experiment "Weg des Buches" interessieren, wie bei der Booksharing-Bewegung.
+Personen, die beim Erwerb eines Buches Geld sparen wollen.
+Personen, die aus ökologischen Gründen keine Neuware kaufen wollen.
+
+-Sekundäre Benutzer
+Personen, die Bücher, die sie selbst nicht lesen wollen (z.B. Geschenk) gerne tauschen möchten.
+Personen, die ein bestimmtes Buch gerne weitergeben möchten.
+
+-Tertiäre Benutzer
+Kommerzielle Anbieter, deren Angebote angezeigt werden. 
+ 
+Charakterisierung der Benutzer:
+Zuordnung relevanter Merkmale zu den Benutzern siehe Charakterisierung.pdf.
+
+
+Anforderungen (user needs)
+
+Zusammenfassung und Priorisierung der Benutzer und was das System ihnen bieten muss:
+
+1  Benutzerwunsch: Bibliotheksverwaltung nutzen (abhängig von Suche). 
+System -> Bibliothek (anzeigen, löschen, hinzufügen (Suche (Autor, Titel, ISBN))
+
+2  Benutzerwunsch: "Tausch"-Funktion nutzen (abhängig von der Bibliotheks- und Wunschlistenverwaltung). 
+System -> Bibliothek und Wunschliste (anzeigen, löschen, hinzufügen), Benachrichtigung bei Übereinstimmung (Tausch anbieten) 
+
+3  Benutzerwunsch: "Stöbern"-Funktion nutzen (abhängig von der Bibliotheks- und Wunschlistenverwaltung). 
+System -> Bibliothek (anzeigen, löschen, hinzufügen), Stöbern (anzeigen der Übereinstimmungen, zur Wunschliste hinzufügen anbieten, Wunschliste (hinzufügen), Benachrichtigung bei Übereinstimmung (Tausch anbieten))
+
+
+Benutzungsmodelle (task models)
+
+siehe Task-models.pdf
+
+
+Projektplan
+
+siehe Projektplan3.pdf
+
